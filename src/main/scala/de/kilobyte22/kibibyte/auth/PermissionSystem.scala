@@ -23,6 +23,7 @@ object PermissionSystem {
     permissions.foreach(perm =>
       _permissionHandler.hasPermission(user, perm) match {
         case Some(p) => return Some(p)
+        case None => Unit
       }
     )
 
@@ -34,6 +35,7 @@ object PermissionSystem {
           permissions.foreach(perm =>
             group.hasPermission(perm) match {
               case Some(p) => return Some(p)
+              case None => Unit
             }
           )
         })
@@ -44,6 +46,7 @@ object PermissionSystem {
       permissions.foreach(perm =>
         group.hasPermission(perm) match {
           case Some(p) => return Some(p)
+          case None => Unit
         }
       )
     )

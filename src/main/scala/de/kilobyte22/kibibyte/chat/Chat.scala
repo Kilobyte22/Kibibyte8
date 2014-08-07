@@ -7,17 +7,19 @@ trait Chat {
    */
   def id: String
 
+  def name: String
+
   /**
    * Join this chat
    * @return This Chat, for easier chaining
    */
-  def join: Chat
+  def join(): Chat
 
   /**
    * Leave the chat
    * @return This Chat, for easier chaining
    */
-  def leave: Chat
+  def leave(): Chat
 
   /**
    * Gets all users in this chat
@@ -58,4 +60,6 @@ trait Chat {
    * @return This Chat, for easier chaining
    */
   def send(message: String): Chat
+
+  def senderFor(user: User): CommandSender
 }

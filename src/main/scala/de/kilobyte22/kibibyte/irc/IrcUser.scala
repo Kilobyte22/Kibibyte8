@@ -1,11 +1,14 @@
 package de.kilobyte22.kibibyte.irc
 
-import de.kilobyte22.kibibyte.chat.{Bot, Chat, CommandSender, User}
+import de.kilobyte22.kibibyte.chat.{Chat, CommandSender, User}
+import org.pircbotx.{User => PircBotXUser}
 
-class IrcUser(val nick: String, val bot: IrcBot) extends User {
+class IrcUser(val backend: PircBotXUser, val bot: IrcBot) extends User {
 
-  var username = ""
-  var host = None
+  def nick = backend.getNick
+  def username = backend.getLogin
+  def host = Some(backend.getHostmask)
+  def hostmask = s"$nick!$username@$host"
 
   override def account: String = nick // TODO: FIX
 

@@ -19,6 +19,11 @@ trait User extends CommandSender {
   def host: Option[String]
 
   /**
+   * @return The hostmask of the user
+   */
+  def hostmask: String
+
+  /**
    * A serverwide kick. May throw PermissionException
    * @param message A kick message, optional
    * @return The user itself, for easy chaining

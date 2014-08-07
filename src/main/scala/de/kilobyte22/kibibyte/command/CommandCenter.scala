@@ -29,18 +29,24 @@ class CommandCenter {
       }
       commandCache
     } else {
-      var data = chatCache(chat)
-      if (data == null) {
+      val data = if (chatCache.contains(chat))
+        chatCache(chat)
+      else {
         val buf = ListBuffer.empty[CommandInfo]
         handlers.values.foreach(el => buf ++= el.commands(chat))
-        chatCache(chat) = data = buf.toList
+        val d = buf.toList
+        chatCache(chat) = d
+        d
       }
       data
     }
 
-  def commands(name: String, chat: Chat = null): Iterable[CommandInfo] = if (chat == null) {
+  def commands(name: String): Iterable[CommandInfo] = commands(name, null)
+
+  def commands(name: String, chat: Chat): Iterable[CommandInfo] = if (chat == null) {
     if (!nameCache.contains(name)) {
-      val ret = commands().filter(_.name == name)
+      val ret_ = commands()
+      val ret = ret_.filter(_.name == name)
       if (ret.size > 0)
         nameCache(name) = ret.toList
       ret
@@ -83,7 +89,7 @@ class CommandCenter {
    * @param sender the origin of the command
    * @param chat the chat this command was issued in. Can be null if it was issued for example from command line
    */
-  def run(namespace: String, name: String, args: Iterable[String], sender: CommandSender, chat: Chat): Unit = {
+  def run(namespace: String, name: String, args: Array[String], sender: CommandSender, chat: Chat): Unit = {
     val cmds = if (namespace == null)
       commands(name, chat)
     else
@@ -99,7 +105,7 @@ class CommandCenter {
         try {
           cmd.run(CommandParams(args, sender, chat))
         } catch {
-          case _ => ???
+          case ex: Throwable => ex.printStackTrace()
         }
       }
     }
@@ -111,7 +117,7 @@ class CommandCenter {
    * @param sender The sender of the command
    * @param chat
    */
-  def run(string: String, sender: CommandSender, chat: Chat) = {
+  def run(string: String, sender: CommandSender, chat: Chat) {
     val splitted = OptionParser.splitArgs(string)
     val command = splitted.head
     val args = splitted.tail

@@ -11,7 +11,7 @@ object Core {
     override def canVerbose: Boolean = true
 
     override def sendError(message: String): CommandSender = {
-      message.split("\n").foreach(line => println(s"\u001B[31m[CMD] $line\u001B[0m"))
+      message.split("\n").foreach(line => println(s"\u001B[31m[CMD] ${line}\u001B[0m"))
       this
     }
 

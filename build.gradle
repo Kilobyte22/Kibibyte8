@@ -13,4 +13,5 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile 'org.scala-lang:scala-library:2.10.2'
     compile 'org.pircbotx:pircbotx:1.9'
+    compile 'com.typesafe.slick:slick_2.10:2.1.0'
 }

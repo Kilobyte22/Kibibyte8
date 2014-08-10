@@ -1,6 +1,7 @@
 package de.kilobyte22.kibibyte.irc
 
 import de.kilobyte22.config.ConfigElement
+import de.kilobyte22.kibibyte.auth.LoginHandler
 import de.kilobyte22.kibibyte.chat.{User, Chat, Bot}
 import de.kilobyte22.kibibyte.core.Kibibyte
 import de.kilobyte22.kibibyte.event.ChatMessageEvent
@@ -16,9 +17,10 @@ class IrcBot(val id: String, cfg: ConfigElement, kibibyte: Kibibyte) extends Bot
   val users = mutable.Map.empty[String, IrcUser]
   val chats = mutable.Map.empty[String, IrcChat]
   val backend = new PircBotX
+
   backend.setName(cfg.first("nick").getString(0))
   backend.setLogin("kibibyte")
-  backend.setVersion(s"Kibibyte, version ${Kibibyte.Version}");
+  backend.setVersion(s"Kibibyte, version ${Kibibyte.Version}")
   backend.setVerbose(cfg.has("verbose"))
   backend.getListenerManager.addListener(new IrcListener(kibibyte, this))
 

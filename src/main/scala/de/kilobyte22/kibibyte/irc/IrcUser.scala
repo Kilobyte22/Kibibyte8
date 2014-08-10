@@ -10,7 +10,7 @@ class IrcUser(val backend: PircBotXUser, val bot: IrcBot) extends User {
   def host = Some(backend.getHostmask)
   def hostmask = s"$nick!$username@$host"
 
-  override def account: String = nick // TODO: FIX
+  override def account: String = bot.loginHandler.accountFor(this)
 
   /**
    * A serverwise ban, may throw PermissionException

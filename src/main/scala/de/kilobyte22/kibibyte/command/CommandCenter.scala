@@ -89,7 +89,7 @@ class CommandCenter {
    * @param sender the origin of the command
    * @param chat the chat this command was issued in. Can be null if it was issued for example from command line
    */
-  def run(namespace: String, name: String, args: Array[String], sender: CommandSender, chat: Chat): Unit = {
+  def run(namespace: String, name: String, args: Array[String], sender: CommandSender, chat: Chat, pipeData: String): String = {
     val cmds = if (namespace == null)
       commands(name, chat)
     else
@@ -97,18 +97,20 @@ class CommandCenter {
         case command: CommandInfo => List(command)
         case _ => List.empty[CommandInfo]
       }
+    val params = CommandParams(args, sender, chat, pipeData)
     cmds.size match {
       case 0 => sender.commandNotFound(name)
       case x: Int if x > 1 => sender.sendError("Multiple matching commands found") // TODO: Add details to error
       case _ => {
         val cmd = cmds.head
         try {
-          cmd.run(CommandParams(args, sender, chat))
+          cmd.run(params)
         } catch {
           case ex: Throwable => ex.printStackTrace()
         }
       }
     }
+    params.buffer
   }
 
   /**
@@ -117,7 +119,7 @@ class CommandCenter {
    * @param sender The sender of the command
    * @param chat
    */
-  def run(string: String, sender: CommandSender, chat: Chat) {
+  def run(string: String, sender: CommandSender, chat: Chat, pipeData: String = ""): String = {
     val splitted = OptionParser.splitArgs(string)
     val command = splitted.head
     val args = splitted.tail
@@ -125,7 +127,16 @@ class CommandCenter {
       val parts = command.split(":")
       (parts.init.mkString(":"), parts.last)
     } else (null, command)
-    run(prefix, name, args, sender, chat)
+    run(prefix, name, args, sender, chat, pipeData)
   }
+
+  def runLine(string: String, sender: CommandSender, chat: Chat, pipeData: String = "") {
+    val message = CommandParser.run(string).run(sender, chat, this, pipeData)
+    chat match {
+      case chat: Chat => chat.send(message)
+      case _ => sender.sendMessage(message)
+    }
+  }
+
 
 }

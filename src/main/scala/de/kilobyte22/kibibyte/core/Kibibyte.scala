@@ -28,7 +28,7 @@ class Kibibyte {
   @Subscribe
   def onMessage(event: ChatMessageEvent) {
     if (event.message.startsWith("##")) {
-      commandCenter.run(event.message.substring(2), event.chat.senderFor(event.user), event.chat)
+      commandCenter.runLine(event.message.substring(2), event.chat.senderFor(event.user), event.chat)
     }
   }
   @Subscribe

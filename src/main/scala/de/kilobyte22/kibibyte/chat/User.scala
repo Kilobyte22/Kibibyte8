@@ -1,6 +1,6 @@
 package de.kilobyte22.kibibyte.chat
 
-import de.kilobyte22.kibibyte.auth.PermissionSystem
+import de.kilobyte22.kibibyte.auth.{Account, PermissionSystem}
 
 trait User extends CommandSender {
   /**
@@ -55,7 +55,7 @@ trait User extends CommandSender {
    */
   def bot: Bot
 
-  def account: String
+  def accounts: List[Account] = bot.loginHandler.getAccountsForUser(this)
 
   def hasPermission(name: String, chat: Chat = null) = PermissionSystem.hasPermission(this, chat, name)
 }

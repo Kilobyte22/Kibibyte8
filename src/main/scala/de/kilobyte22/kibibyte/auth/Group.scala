@@ -8,8 +8,8 @@ trait Group {
    * @param permission The Permission to check for
    * @return `Some(value) if this group explicitely has a permission set, otherwise `None`
    */
-  def hasPermission(permission: String): Option[Boolean]
   def set(permission: String, value: Option[Boolean])
-  def +=(user: User)
-  def -=(user: User)
+  def hasPermission(permission: String): Option[Boolean]
+  def +=(user: Identity)
+  def -=(user: Identity)
 }

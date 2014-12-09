@@ -1,5 +1,6 @@
 package de.kilobyte22.kibibyte.irc
 
+import de.kilobyte22.kibibyte.auth.Account
 import de.kilobyte22.kibibyte.chat.{Chat, CommandSender, User}
 import org.pircbotx.{User => PircBotXUser}
 
@@ -9,8 +10,6 @@ class IrcUser(val backend: PircBotXUser, val bot: IrcBot) extends User {
   def username = backend.getLogin
   def host = Some(backend.getHostmask)
   def hostmask = s"$nick!$username@$host"
-
-  override def account: String = bot.loginHandler.accountFor(this)
 
   /**
    * A serverwise ban, may throw PermissionException

@@ -1,10 +1,13 @@
 package de.kilobyte22.kibibyte.auth
 
-import de.kilobyte22.kibibyte.chat.Chat
-import de.kilobyte22.kibibyte.notifications.NotificationSystem
-
 class Account {
+  def id: String = s"$service:$handler/$server/$name"
+
+  def service: String = ???
+  def handler: String = ???
+  def server: String = ???
   def name: String = ???
-  def hasPermission(perm: String, chat: Chat = null): Boolean = ???
-  def checkPassword(password: String) = ???
+
+  def identity = PermissionSystem.permissionHandler.identityFor(this)
+
 }

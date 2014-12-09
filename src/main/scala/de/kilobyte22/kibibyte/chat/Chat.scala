@@ -1,6 +1,9 @@
 package de.kilobyte22.kibibyte.chat
 
 trait Chat {
+
+  def bot: Bot
+
   /**
    * A serverwise unique id for the chat
    * @return

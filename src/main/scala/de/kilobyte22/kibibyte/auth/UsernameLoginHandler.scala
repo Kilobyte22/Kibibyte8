@@ -1,7 +1,6 @@
 package de.kilobyte22.kibibyte.auth
 
-import de.kilobyte22.kibibyte.chat.{User, Bot}
-
+/*
 object UsernameLoginHandler extends LoginHandler {
 
   override def accountFor(user: User) = user.host match {
@@ -19,3 +18,4 @@ object UsernameLoginHandler extends LoginHandler {
 
   override def enable(bot: Bot) = Unit
 }
+*/

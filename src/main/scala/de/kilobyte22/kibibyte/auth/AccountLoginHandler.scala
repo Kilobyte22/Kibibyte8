@@ -1,10 +1,5 @@
 package de.kilobyte22.kibibyte.auth
-
-import de.kilobyte22.kibibyte.chat.{User, Bot}
-import de.kilobyte22.kibibyte.command.{CommandParams, command}
-
-import scala.collection.mutable
-
+/*
 object AccountLoginHandler extends LoginHandler {
 
   val accounts = mutable.WeakHashMap.empty[User, String]
@@ -23,3 +18,4 @@ object AccountLoginHandler extends LoginHandler {
 
   @command def login(params: CommandParams) = Unit
 }
+*/

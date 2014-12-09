@@ -131,8 +131,8 @@ class CommandCenter {
   }
 
   def runLine(string: String, sender: CommandSender, chat: Chat, pipeData: String = "") {
-    val message = CommandParser.run(string).run(sender, chat, this, pipeData)
-    chat match {
+    val message = run(string, sender, chat, pipeData) // CommandParser.run(string).run(sender, chat, this, pipeData)
+    if (message != "") chat match {
       case chat: Chat => chat.send(message)
       case _ => sender.sendMessage(message)
     }

@@ -1,6 +1,7 @@
 package de.kilobyte22.kibibyte.auth
 
 import de.kilobyte22.kibibyte.chat.{User, Chat}
+import de.kilobyte22.kibibyte.core.Server
 
 import scala.collection.mutable
 
@@ -9,19 +10,25 @@ object PermissionSystem {
   private var _permissionHandler: PermissionHandler = null
   val specialGroupHandlers = mutable.ArrayBuffer.empty[SpecialGroupHandler]
 
-  def hasPermission(user: User, chat: Chat, permission: String) = {
+  def hasPermission(user: User, chat: Chat, permission: String): Boolean = {
     val permissions = splitNode(permission)
-    userHasPermission(user, chat, permissions) orElse userHasPermission(null, chat, permissions) match {
-      case Some(value: Boolean) => value
-      case None => false
-    }
+    val accounts = Server.serverFor(chat.bot).loginHandler.getAccountsForUser(user)
+    val identities = accounts.map((account) => account.identity) ++ List(_permissionHandler.getOrCreateIdentity("default"))
+
+    identities.foreach((id) => {
+      userHasPermission(user, id, chat, permissions) match {
+        case Some(v: Boolean) => return v
+        case None => Unit
+      }
+    })
+    false
   }
 
-  private def userHasPermission(user: User, chat: Chat, permissions: Iterable[String]): Option[Boolean] = {
+  private def userHasPermission(user: User, identity: Identity, chat: Chat, permissions: Iterable[String]): Option[Boolean] = {
 
     // first we check the users permissions directly
     permissions.foreach(perm =>
-      _permissionHandler.hasPermission(user, perm) match {
+      _permissionHandler.hasPermission(identity, perm) match {
         case Some(p) => return Some(p)
         case None => Unit
       }
@@ -42,7 +49,7 @@ object PermissionSystem {
       )
 
     // Finally we check regular groups of the user
-    _permissionHandler.groupsFor(user).foreach(group =>
+    _permissionHandler.groupsFor(identity).foreach(group =>
       permissions.foreach(perm =>
         group.hasPermission(perm) match {
           case Some(p) => return Some(p)

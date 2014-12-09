@@ -3,7 +3,7 @@ package de.kilobyte22.kibibyte.irc
 import de.kilobyte22.kibibyte.chat.User
 import org.pircbotx.Channel
 
-class IrcChannel(backend: Channel, bot: IrcBot) extends IrcChat(backend.getBot) {
+class IrcChannel(backend: Channel, val bot: IrcBot) extends IrcChat(backend.getBot) {
   override def name = backend.getName
   override def id = name.toLowerCase
   override def join() = toChat(bot.backend.joinChannel(name))

@@ -3,7 +3,6 @@ package de.kilobyte22.kibibyte.message
 import java.awt.Color
 
 import org.scalatest._
-import org.scalatest.matchers.ClassicMatchers
 
 object TestSimpleFormatter extends MessageFormatter {
   //override def formatColor(foreground: Color, background: Color): String = f"=c(#${foreground.getRGB}%06X, #${background.getRGB}%06X)"
@@ -18,8 +17,9 @@ object TestSimpleFormatter extends MessageFormatter {
 
 
 
-class FormattedMessageSpec extends FlatSpec with ClassicMatchers {
+class FormattedMessageSpec extends FlatSpec with ShouldMatchers {
   "A message" should "be bolded" in {
+    1 should be (1)
     val f = FormattedMessage.format("text").bold().format(TestSimpleFormatter)
     if (f != "%b{%c(#000000, #FFFFFF){text}}")
       fail("Bold formatting did not work")

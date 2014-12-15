@@ -1,6 +1,8 @@
 package de.kilobyte22.kibibyte.notifications
 
-class NotificationSystem {
-  def notify(notification: Notification) = ???
-  def notify(notification: PushNotification) = ???
+import de.kilobyte22.kibibyte.auth.Identity
+
+object NotificationSystem {
+  def notify(identity: Identity, notification: Notification) = ???
+  def notify(identity: Identity, notification: PushNotification) = ???
 }

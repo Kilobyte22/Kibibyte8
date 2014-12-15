@@ -1,5 +1,7 @@
 package de.kilobyte22.kibibyte.chat
 
+import de.kilobyte22.kibibyte.message.FormattedMessage
+
 trait Chat {
 
   def bot: Bot
@@ -62,7 +64,7 @@ trait Chat {
    * @param message The message to send
    * @return This Chat, for easier chaining
    */
-  def send(message: String): Chat
+  def send(message: FormattedMessage): Chat
 
   def senderFor(user: User): CommandSender
 }

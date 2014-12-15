@@ -8,6 +8,7 @@ trait MessageFormatter {
   def formatUnderline(s: String): String
   def formatColor(s: String, fg: Color, bg: Color): String
 
+
   def format(msg: FormattedMessage) = {
     msg.parts.map((el) => {
       var tmp = el.text

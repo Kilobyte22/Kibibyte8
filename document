@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd doc
+
+find ../src -name '*.scala' | xargs scaladoc -doc-title "Kibibyte v8 documentation"

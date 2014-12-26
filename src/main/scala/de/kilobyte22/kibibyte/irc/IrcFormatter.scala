@@ -9,9 +9,9 @@ object IrcFormatter extends MessageColorReducer[String] {
 
   override def formatColored(s: String, fg: String, bg: String): String = s // TODO: too lazy for colors right now
 
-  override def formatItalic(s: String): String = s"\u0002$s\u0002"
+  override def formatItalic(s: String): String = s"\u0002${s}\u0002"
 
-  override def formatUnderline(s: String): String = s"\u001F$s\u001F"
+  override def formatUnderline(s: String): String = s"\u001F${s}\u001F"
 
-  override def formatBold(s: String): String = s"\u001D$s\u001D"
+  override def formatBold(s: String): String = s"\u001D${s}\u001D"
 }

@@ -1,11 +1,12 @@
 package de.kilobyte22.kibibyte.irc
 
 import de.kilobyte22.kibibyte.chat.{Chat, CommandSender, User}
+import de.kilobyte22.kibibyte.message.FormattedMessage
 
 class ChannelSender(chat: IrcChannel, user: User) extends CommandSender {
   override def hasPermission(name: String, chat: Chat): Boolean = ???
 
-  override def sendError(message: String): CommandSender = user.sendError(message)
+  override def sendError(message: FormattedMessage): CommandSender = user.sendError(message)
 
   override def verbose_=(value: Boolean): Boolean = ???
 
@@ -15,5 +16,5 @@ class ChannelSender(chat: IrcChannel, user: User) extends CommandSender {
 
   override def commandNotFound(command: String): CommandSender = this // No command missing message in channel
 
-  override def sendMessage(message: String): CommandSender = user.sendMessage(message)
+  override def sendMessage(message: FormattedMessage): CommandSender = user.sendMessage(message)
 }

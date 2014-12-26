@@ -1,7 +1,7 @@
 package de.kilobyte22.kibibyte.irc
 
-import de.kilobyte22.kibibyte.auth.Account
 import de.kilobyte22.kibibyte.chat.{Chat, CommandSender, User}
+import de.kilobyte22.kibibyte.message.FormattedMessage
 import org.pircbotx.{User => PircBotXUser}
 
 class IrcUser(val backend: PircBotXUser, val bot: IrcBot) extends User {
@@ -30,7 +30,7 @@ class IrcUser(val backend: PircBotXUser, val bot: IrcBot) extends User {
    */
   override def kick(message: String): IrcUser = ???
 
-  override def sendError(message: String): IrcUser = ???
+  override def sendError(message: FormattedMessage): IrcUser = ???
 
   override def verbose_=(value: Boolean): Boolean = value
 
@@ -38,7 +38,7 @@ class IrcUser(val backend: PircBotXUser, val bot: IrcBot) extends User {
 
   override def canVerbose: Boolean = false
 
-  override def sendMessage(message: String): IrcUser = ???
+  override def sendMessage(message: FormattedMessage): IrcUser = ???
 
   override def commandNotFound(command: String): CommandSender = sendError(s"Command not found: $command")
 }

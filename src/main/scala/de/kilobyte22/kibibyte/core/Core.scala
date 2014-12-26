@@ -1,6 +1,7 @@
 package de.kilobyte22.kibibyte.core
 
-import de.kilobyte22.kibibyte.chat.{CommandSender, User, Chat, Bot}
+import de.kilobyte22.kibibyte.chat.{Chat, CommandSender}
+import de.kilobyte22.kibibyte.message.FormattedMessage
 
 object Core {
 
@@ -10,20 +11,20 @@ object Core {
 
     override def canVerbose: Boolean = true
 
-    override def sendError(message: String): CommandSender = {
-      message.split("\n").foreach(line => println(s"\u001B[31m[CMD] ${line}\u001B[0m"))
+    override def sendError(message: FormattedMessage): CommandSender = {
+      message.toString.split("\n").foreach(line => println(s"\u001B[31m[CMD] ${line}\u001B[0m"))
       this
     }
 
     override def verbose_=(value: Boolean): Boolean = {
-      _verbose = value // WTH IS THIS Unit
+      _verbose = value
       value
     }
 
     override def verbose: Boolean = _verbose
 
-    override def sendMessage(message: String): CommandSender = {
-      message.split("\n").foreach(line => println(s"[CMD] $line"))
+    override def sendMessage(message: FormattedMessage): CommandSender = {
+      message.toString.split("\n").foreach(line => println(s"[CMD] $line"))
       this
     }
 

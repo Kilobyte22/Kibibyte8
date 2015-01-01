@@ -2,7 +2,7 @@ package de.kilobyte22.kibibyte.command
 
 import de.kilobyte22.kibibyte.chat.{CommandSender, Chat}
 
-class CommandParams(val args: CommandArgs, val sender: CommandSender, val chat: Chat, val input: String = "") {
+class CommandParams(val args: CommandArgs, val sender: CommandSender, val chat: Chat, val center: CommandCenter, val input: String = "") {
   private var _buffer = ""
   def buffer = _buffer
 
@@ -14,6 +14,6 @@ class CommandParams(val args: CommandArgs, val sender: CommandSender, val chat: 
 }
 
 object CommandParams {
-  def apply(args: Array[String], sender: CommandSender, chat: Chat, input: String = "") =
-    new CommandParams(CommandArgs(args), sender, chat, input)
+  def apply(args: Array[String], sender: CommandSender, chat: Chat, center: CommandCenter, input: String = "") =
+    new CommandParams(CommandArgs(args), sender, chat, center, input)
 }

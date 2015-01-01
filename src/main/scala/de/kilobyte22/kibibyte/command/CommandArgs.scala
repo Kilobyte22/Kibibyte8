@@ -5,6 +5,8 @@ class CommandArgs(val data: Array[String]) extends Iterable[String] {
   def apply(id: Int) = data(id)
 
   def join(start: Int = 0, end: Int = data.length) = data.slice(start, end).mkString(" ")
+  override def mkString(sep: String) = data.mkString(sep)
+  override def slice(start: Int, end: Int) = data.slice(start, end)
 
 
   class IntIterator extends Iterator[String] {
@@ -16,7 +18,7 @@ class CommandArgs(val data: Array[String]) extends Iterable[String] {
 }
 
 object CommandArgs {
-  implicit def toObject(in: CommandArgs) = in.data
-  implicit def toString(in: CommandArgs) = in.join()
+  implicit def toObject(in: CommandArgs): Array[String] = in.data
+  implicit def toString(in: CommandArgs): String = in.join()
   def apply(args: Array[String]) = new CommandArgs(args)
 }

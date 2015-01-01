@@ -21,7 +21,6 @@ class IrcBot(val id: String, cfg: ConfigElement, kibibyte: Kibibyte) extends Bot
   backend.setName(cfg.first("nick").getString(0))
   backend.setLogin("kibibyte")
   backend.setVersion(s"Kibibyte, version ${Kibibyte.Version}")
-  backend.setVerbose(cfg.has("verbose"))
   backend.getListenerManager.addListener(new IrcListener(kibibyte, this))
 
   {

@@ -38,7 +38,7 @@ class CommandManager(center: CommandCenter, val namespace: String) {
       val annot = m.getAnnotation(classOf[command])
       val name = if (annot.name() == "") m.getName else annot.name()
 
-      commandStore += ((name, new CommandInfo(o, m, name, namespace)))
+      commandStore += ((name, new CommandInfo(o, MethodHandles.lookup.unreflect(m), name, namespace)))
     })
 
 }

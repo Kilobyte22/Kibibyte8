@@ -26,9 +26,13 @@ object Main {
     bot.eventBusDebug = file.has("eventbusdebug")
     val ircs = ArrayBuffer.empty[IrcBot]
 
+    println("Connecting...")
+
     file.getOptions("irc").foreach(el => {
       val irc = new IrcBot(el.getString(0), el.getSub, bot)
     })
+
+    println("Connected.")
 
     for (ln <- io.Source.stdin.getLines())
       bot.runCommand(ln)

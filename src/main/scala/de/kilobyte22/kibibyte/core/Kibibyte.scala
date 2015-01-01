@@ -39,5 +39,6 @@ class Kibibyte {
 }
 
 object Kibibyte {
-  val Version = "8.0.0"
+  val Version = "8.PA.0.0"
+  val CompileDate: Option[String] = None
 }

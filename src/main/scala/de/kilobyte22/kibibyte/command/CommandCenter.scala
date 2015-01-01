@@ -97,7 +97,7 @@ class CommandCenter {
         case command: CommandInfo => List(command)
         case _ => List.empty[CommandInfo]
       }
-    val params = CommandParams(args, sender, chat, pipeData)
+    val params = CommandParams(args, sender, chat, this, pipeData)
     cmds.size match {
       case 0 => sender.commandNotFound(name)
       case x: Int if x > 1 => sender.sendError("Multiple matching commands found") // TODO: Add details to error

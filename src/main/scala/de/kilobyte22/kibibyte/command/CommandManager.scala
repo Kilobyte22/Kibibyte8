@@ -1,8 +1,8 @@
 package de.kilobyte22.kibibyte.command
 
-import de.kilobyte22.kibibyte.chat.{CommandSender, Chat}
-import de.kilobyte22.kibibyte.core.Kibibyte
-import de.kilobyte22.optionparse.OptionParser
+import java.lang.invoke.MethodHandles
+
+import de.kilobyte22.kibibyte.chat.Chat
 
 import scala.collection.mutable
 

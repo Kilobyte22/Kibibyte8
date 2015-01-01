@@ -9,10 +9,4 @@ trait ServerPlugin extends Plugin {
    * Set to empty if it runs on the default api
    */
   val onlyOn = List.empty[String]
-
-  /**
-   * Called right after the instance is created and set up. Do your
-   */
-  def enable()
-  def disable()
 }

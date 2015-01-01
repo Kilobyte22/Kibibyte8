@@ -10,4 +10,14 @@ trait Plugin {
       _botAccess = value
   def load()
   def unload()
+
+  /**
+   * Called right after the instance is created and set up. Do your initialization here
+   */
+  def enable()
+
+  /**
+   * Called right before the plugin is dropped from RAM
+   */
+  def disable()
 }

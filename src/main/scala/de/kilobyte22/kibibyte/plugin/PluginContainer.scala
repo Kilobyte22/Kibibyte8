@@ -16,7 +16,7 @@ class PluginContainer(klass: Class[_], name: String) {
   }
 
   def enable(): Unit = {
-    instance
+    instance.plugin.enable()
   }
 
 }

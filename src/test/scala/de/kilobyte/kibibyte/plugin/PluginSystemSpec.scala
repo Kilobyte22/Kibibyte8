@@ -11,6 +11,16 @@ object TestPlugin {
 class TestPlugin extends GlobalPlugin {
   override def load(): Unit = TestPlugin.loaded = true
   override def unload(): Unit = ()
+
+  /**
+   * Called right after the instance is created and set up. Do your initialization here
+   */
+  override def enable(): Unit = ???
+
+  /**
+   * Called right before the plugin is dropped from RAM
+   */
+  override def disable(): Unit = ???
 }
 
 class PluginSystemSpec extends FlatSpec with ShouldMatchers {

@@ -1,0 +1,9 @@
+.gradle
+.idea
+*.ipr
+*.iws
+*.iml
+kibibyte.cfg
+projectFilesBackup
+out
+*.swp

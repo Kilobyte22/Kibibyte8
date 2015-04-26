@@ -17,4 +17,6 @@ dependencies {
     compile 'com.typesafe.slick:slick_2.10:2.1.0'
     compile 'com.google.guava:guava:14.0.1'
     compile 'org.slf4j:slf4j-simple:1.7.7'
+    compile 'org.yaml:snakeyaml:1.15'
+
 }

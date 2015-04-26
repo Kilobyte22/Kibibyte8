@@ -9,6 +9,7 @@ class PluginManager {
   val plugins = mutable.Map.empty[String, PluginContainer]
   val chatPlugins = mutable.WeakHashMap.empty[Chat, ArrayBuffer[PluginContainer]]
   val serverPlugins = mutable.WeakHashMap.empty[Bot, ArrayBuffer[PluginContainer]]
+  val availablePlugins = mutable.Map.empty[String, PluginMetadata]
 
   def load(name: String) = {
 

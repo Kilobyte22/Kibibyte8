@@ -2,6 +2,22 @@ package de.kilobyte22.kibibyte.command
 
 import de.kilobyte22.kibibyte.chat.{Chat, CommandSender}
 
+object CommandParser {
+  def run(data: String) = {
+    val args = data.split(" ").filter(!_.isEmpty)
+    new CommandResult(args.head, args.tail)
+  }
+}
+
+class CommandResult(command: String, args: Seq[String]) {
+  def run(sender: CommandSender, chat: Chat, center: CommandCenter, pipeData: String) = center.run(command, sender, chat, pipeData)
+}
+
+// TODO: Fix this for piping support
+
+/*
+import de.kilobyte22.kibibyte.chat.{Chat, CommandSender}
+
 import scala.util.parsing.combinator.RegexParsers
 
 object CommandParser extends RegexParsers {
@@ -40,3 +56,4 @@ case class Pipe(_1: Element, _2: Element) extends Element {
   override def toString =
     s"Pipe(${_1.toString}, ${_2.toString})"
 }
+*/

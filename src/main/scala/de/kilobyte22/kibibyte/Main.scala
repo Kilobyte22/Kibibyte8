@@ -14,6 +14,7 @@ object Main {
     val f = new File("kibibyte.cfg")
 
     if (!f.exists()) {
+      // TODO: Copy example file there
       f.createNewFile()
 
     }

@@ -8,4 +8,5 @@ projectFilesBackup
 out
 /project
 /target
+/deploy
 *.swp

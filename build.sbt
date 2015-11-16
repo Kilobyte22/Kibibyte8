@@ -19,6 +19,7 @@ libraryDependencies += "org.slf4j" % "slf4j-simple" % "1.7.7"
 resolvers += "My Personal Repo" at "http://maven.kilobyte22.de"
 
 mainClass in Compile := Some("de.kilobyte22.kibibyte.Main")
+scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature")
 
 lazy val getDeps = taskKey[Unit]("Outputs dependencies")
 getDeps := println(libraryDependencies.value.toString)

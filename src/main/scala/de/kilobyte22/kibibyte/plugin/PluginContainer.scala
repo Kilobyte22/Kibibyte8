@@ -1,22 +1,49 @@
 package de.kilobyte22.kibibyte.plugin
 
+/**
+* Wrapper for an enabled plugin
+*/
 class PluginContainer(klass: Class[_], name: String) {
 
   private val ChatPluginClass = classOf[ChatPlugin]
   private val ServerPluginClass = classOf[ServerPlugin]
   private val GlobalPluginClass = classOf[GlobalPlugin]
-  val instance = klass.getSuperclass match {
+
+  private var _enabled = false
+
+  lazy val instance = klass.getSuperclass match {
     case ChatPluginClass => ChatContainer(klass.newInstance().asInstanceOf[ChatPlugin])
     case ServerPluginClass => ServerContainer(klass.newInstance().asInstanceOf[ServerPlugin])
     case GlobalPluginClass => GlobalContainer(klass.newInstance().asInstanceOf[GlobalPlugin])
   }
 
-  def load(): Unit = {
-    instance.plugin.load()
-  }
-
+  /**
+  * Enables the plugin
+  */
   def enable(): Unit = {
     instance.plugin.enable()
+    _enabled = true
+  }
+
+  /**
+  * Disables the plugin
+  */
+  def disable(): Unit = {
+    try {
+      instance.plugin.disable()
+    } catch {
+      // TODO: Proper logging
+      case ex: Exception => ex.printStackTrace()
+    }
+    _enabled = false
+  }
+
+  /**
+  * Ensures the plugin is disabled when the container is garbage collected
+  */
+  override def finalize(): Unit = {
+    if (_enabled) disable()
+    super.finalize()
   }
 
 }

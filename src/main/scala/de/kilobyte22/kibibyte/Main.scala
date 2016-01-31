@@ -10,6 +10,10 @@ import scala.collection.mutable.ArrayBuffer
 import scala.collection.JavaConversions._
 
 object Main {
+  /**
+  * Main entry point for kibibyte. Set this as main method when including 
+  * kibi as library in your plugin project
+  */
   def main(args: Array[String]) {
     val f = new File("kibibyte.cfg")
 

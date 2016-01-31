@@ -1,4 +1,6 @@
-package de.kilobyte22.kibibyte.auth
+package de.kilobyte22.kibibyte.api.auth
+
+import de.kilobyte22.kibibyte.auth.Account
 
 trait PermissionHandler {
   /**

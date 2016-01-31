@@ -2,7 +2,7 @@ package de.kilobyte22.kibibyte.command
 
 import java.lang.invoke.MethodHandles
 
-import de.kilobyte22.kibibyte.chat.Chat
+import de.kilobyte22.kibibyte.api.chat.Chat
 
 import scala.collection.mutable
 

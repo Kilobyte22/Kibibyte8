@@ -1,6 +1,6 @@
 package de.kilobyte22.kibibyte.irc
 
-import de.kilobyte22.kibibyte.chat.User
+import de.kilobyte22.kibibyte.api.chat.User
 import org.pircbotx.Channel
 
 class IrcChannel(backend: Channel, val bot: IrcBot) extends IrcChat(backend.getBot) {

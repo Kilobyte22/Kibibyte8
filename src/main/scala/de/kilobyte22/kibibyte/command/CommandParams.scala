@@ -1,6 +1,6 @@
 package de.kilobyte22.kibibyte.command
 
-import de.kilobyte22.kibibyte.chat.{CommandSender, Chat}
+import de.kilobyte22.kibibyte.api.chat.{Chat, CommandSender}
 
 class CommandParams(val args: CommandArgs, val sender: CommandSender, val chat: Chat, val center: CommandCenter, val input: String = "") {
   private var _buffer = ""

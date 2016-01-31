@@ -1,6 +1,7 @@
 package de.kilobyte22.kibibyte.auth
 
-import de.kilobyte22.kibibyte.chat.{User, Chat}
+import de.kilobyte22.kibibyte.api.auth.{SpecialGroupHandler, PermissionHandler, Identity}
+import de.kilobyte22.kibibyte.api.chat.{Chat, User}
 import de.kilobyte22.kibibyte.core.Server
 
 import scala.collection.mutable

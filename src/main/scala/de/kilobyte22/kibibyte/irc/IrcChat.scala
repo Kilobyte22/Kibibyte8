@@ -1,6 +1,6 @@
 package de.kilobyte22.kibibyte.irc
 
-import de.kilobyte22.kibibyte.chat.Chat
+import de.kilobyte22.kibibyte.api.chat.Chat
 import de.kilobyte22.kibibyte.message.FormattedMessage
 import org.pircbotx.PircBotX
 

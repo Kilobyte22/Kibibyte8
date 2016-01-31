@@ -1,6 +1,6 @@
 package de.kilobyte22.kibibyte.command
 
-import de.kilobyte22.kibibyte.chat.{Chat, CommandSender}
+import de.kilobyte22.kibibyte.api.chat.{Chat, CommandSender}
 
 object CommandParser {
   def run(data: String) = {

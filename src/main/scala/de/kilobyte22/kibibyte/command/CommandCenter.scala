@@ -1,6 +1,6 @@
 package de.kilobyte22.kibibyte.command
 
-import de.kilobyte22.kibibyte.chat.{CommandSender, Chat}
+import de.kilobyte22.kibibyte.api.chat.{Chat, CommandSender}
 import de.kilobyte22.optionparse.OptionParser
 
 import scala.collection.mutable.{ListBuffer, ArrayBuffer}

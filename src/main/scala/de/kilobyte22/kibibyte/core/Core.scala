@@ -1,6 +1,6 @@
 package de.kilobyte22.kibibyte.core
 
-import de.kilobyte22.kibibyte.chat.{Chat, CommandSender}
+import de.kilobyte22.kibibyte.api.chat.{Chat, CommandSender}
 import de.kilobyte22.kibibyte.message.FormattedMessage
 
 object Core {

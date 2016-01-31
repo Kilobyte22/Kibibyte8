@@ -1,7 +1,7 @@
 package de.kilobyte22.kibibyte.core
 
 import com.google.common.eventbus.{Subscribe, EventBus}
-import de.kilobyte22.kibibyte.chat.{Chat, CommandSender}
+import de.kilobyte22.kibibyte.api.chat.{Chat, CommandSender}
 import de.kilobyte22.kibibyte.command.{CoreCommands, CommandManager, CommandCenter}
 import de.kilobyte22.kibibyte.event.ChatMessageEvent
 

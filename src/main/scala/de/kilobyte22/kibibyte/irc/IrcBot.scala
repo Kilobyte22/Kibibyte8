@@ -1,7 +1,7 @@
 package de.kilobyte22.kibibyte.irc
 
 import de.kilobyte22.config.ConfigElement
-import de.kilobyte22.kibibyte.chat.{Bot, Chat}
+import de.kilobyte22.kibibyte.api.chat.{Bot, Chat}
 import de.kilobyte22.kibibyte.core.Kibibyte
 import de.kilobyte22.kibibyte.event.ChatMessageEvent
 import org.pircbotx.PircBotX

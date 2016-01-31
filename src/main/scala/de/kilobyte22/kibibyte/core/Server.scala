@@ -1,7 +1,7 @@
 package de.kilobyte22.kibibyte.core
 
-import de.kilobyte22.kibibyte.auth.LoginHandler
-import de.kilobyte22.kibibyte.chat.Bot
+import de.kilobyte22.kibibyte.api.auth.LoginHandler
+import de.kilobyte22.kibibyte.api.chat.Bot
 
 import scala.collection.mutable
 

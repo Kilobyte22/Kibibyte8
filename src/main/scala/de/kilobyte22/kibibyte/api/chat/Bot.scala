@@ -1,6 +1,6 @@
-package de.kilobyte22.kibibyte.chat
+package de.kilobyte22.kibibyte.api.chat
 
-import de.kilobyte22.kibibyte.auth.LoginHandler
+import de.kilobyte22.kibibyte.api.auth.LoginHandler
 
 trait Bot {
   def id: String

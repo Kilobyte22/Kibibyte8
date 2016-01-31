@@ -1,6 +1,4 @@
-package de.kilobyte22.kibibyte.auth
-
-import de.kilobyte22.kibibyte.chat.User
+package de.kilobyte22.kibibyte.api.auth
 
 trait Group {
   /**

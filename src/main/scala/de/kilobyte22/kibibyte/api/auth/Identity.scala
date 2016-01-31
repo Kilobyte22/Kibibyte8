@@ -1,5 +1,6 @@
-package de.kilobyte22.kibibyte.auth
+package de.kilobyte22.kibibyte.api.auth
 
+import de.kilobyte22.kibibyte.auth.Account
 import de.kilobyte22.kibibyte.notifications.{Notification, NotificationSystem, PushNotification}
 
 trait Identity {

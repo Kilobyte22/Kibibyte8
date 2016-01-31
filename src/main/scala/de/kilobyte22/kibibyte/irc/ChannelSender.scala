@@ -1,6 +1,6 @@
 package de.kilobyte22.kibibyte.irc
 
-import de.kilobyte22.kibibyte.chat.{Chat, CommandSender, User}
+import de.kilobyte22.kibibyte.api.chat.{Chat, User, CommandSender}
 import de.kilobyte22.kibibyte.message.FormattedMessage
 
 class ChannelSender(chat: IrcChannel, user: User) extends CommandSender {

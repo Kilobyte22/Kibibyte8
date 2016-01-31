@@ -1,16 +1,15 @@
 package de.kilobyte22.kibibyte.irc
 
 import de.kilobyte22.config.ConfigElement
-import de.kilobyte22.kibibyte.auth.LoginHandler
-import de.kilobyte22.kibibyte.chat.{User, Chat, Bot}
+import de.kilobyte22.kibibyte.chat.{Bot, Chat}
 import de.kilobyte22.kibibyte.core.Kibibyte
 import de.kilobyte22.kibibyte.event.ChatMessageEvent
 import org.pircbotx.PircBotX
 import org.pircbotx.hooks.ListenerAdapter
 import org.pircbotx.hooks.events.MessageEvent
 
-import scala.collection.mutable
 import scala.collection.JavaConversions._
+import scala.collection.mutable
 
 class IrcBot(val id: String, cfg: ConfigElement, kibibyte: Kibibyte) extends Bot {
 

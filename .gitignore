@@ -7,3 +7,6 @@ kibibyte.cfg
 projectFilesBackup
 out
 *.swp
+/target
+/project/project
+/project/target

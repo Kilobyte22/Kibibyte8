@@ -1,15 +1,7 @@
-.gradle
 .idea
 *.ipr
 *.iws
 *.iml
-kibibyte.cfg
-projectFilesBackup
 out
-/project
-/target
-/deploy
 *.swp
-/target
-/project/project
-/project/target
+target/

@@ -1,0 +1,31 @@
+image: 1science/sbt
+
+stages:
+- build
+- test
+- package
+
+compile:
+    stage: build
+    script: sbt build
+    only:
+    - master
+    - develop
+
+check:
+    stage: test
+    script: sbt test
+    only:
+    - master
+    - develop
+
+package:
+    stage: package
+    script: sbt jar
+    only:
+    - master
+    - develop
+    artifacts:
+        paths:
+        - target/scala-*
+
